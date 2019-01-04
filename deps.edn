@@ -1,0 +1,12 @@
+{:paths ["src" "test"]
+
+ :deps
+ {reagent               {:mvn/version "0.8.1"}
+  re-frame              {:mvn/version "0.10.6"}
+  clj-commons/secretary {:mvn/version "1.2.4"}
+  venantius/accountant  {:mvn/version "0.2.4"}}
+
+ :aliases
+ {:dev
+  {:extra-deps
+   {cider/cider-nrepl {:mvn/version "0.19.0"}}}}}

@@ -1,0 +1,20 @@
+{:source-paths ["src"]
+
+ :nrepl {:port 3333}
+
+ :deps true
+
+ :builds {:app {:target :browser
+                :output-dir "resources/public/js"
+                :asset-path "/js"
+
+                :modules
+                {:app {:init-fn glam.core/init}}
+
+                :compiler-options
+                {:infer-externs    :auto
+                 :closure-warnings {:global-this :off}}
+
+                :devtools {:after-load glam.core/mount-root
+                           :http-root "resources/public"
+                           :http-port 3449}}}}

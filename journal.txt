@@ -1,0 +1,2 @@
+https://tylersloane.com/posts/2018-06-cljs-npm-deps/
+https://github.com/shadow-cljs/examples/tree/master/deps-edn-re-frame-and-devcards

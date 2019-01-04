@@ -1,0 +1,9 @@
+/*.log
+/target
+/*-init.clj
+/resources/public/js
+/node_modules
+out
+.nrepl-*
+.cpcache
+.shadow-cljs
