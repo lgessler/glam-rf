@@ -7,3 +7,4 @@ out
 .nrepl-*
 .cpcache
 .shadow-cljs
+**/.#*
