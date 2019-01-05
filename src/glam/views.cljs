@@ -5,6 +5,24 @@
    [reagent.core :as r]
    ))
 
+(defn iframe []
+  (let [zip-url (r/atom nil)]
+    (fn []
+      (js/console.log "re-render")
+      [:div
+       [:div
+        [:input {:type "file"
+                 :on-change
+                 (fn [e]
+                   (reset! zip-url (-> e
+                                       .-target
+                                       .-files
+                                       (aget 0)
+                                       (js/URL.createObjectURL))))}]]
+       [:iframe {:src (str "/nohost/index.html?install=" @zip-url)
+                 :style {:width "100%"
+                         :height "700px"}}]])))
+
 ;; home
 
 (defn home-panel []
@@ -17,6 +35,7 @@
       [:a {:href "/about"}
        "go to About Page"]]
 
+     [iframe]
      ]))
 
 ;; about

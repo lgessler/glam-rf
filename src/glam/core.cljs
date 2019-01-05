@@ -17,14 +17,13 @@
     (println "dev mode")))
 
 (defn mount-root []
+  (routes/configure-routes!)
+  (routes/hook-navigation!)
   (re-frame/clear-subscription-cache!)
   (reagent/render [views/main-panel]
                   (.getElementById js/document "app")))
 
 (defn ^:export init []
-
   (dev-setup)
   (re-frame/dispatch-sync [::events/initialize-db])
-  (routes/configure-routes!)
-  (routes/hook-navigation!)
   (mount-root))

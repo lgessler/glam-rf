@@ -16,6 +16,7 @@
 
   (defroute "/about" []
     (re-frame/dispatch [::events/set-active-panel :about-panel]))
+
   )
 
 (defn hook-navigation! []
