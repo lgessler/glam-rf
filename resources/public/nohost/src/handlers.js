@@ -11,8 +11,10 @@ function(Filer, Async, Log, Content) {
     // Stash our require env on the document object so it survies the window
     // being recreated. The nohost.js shim uses it to acquire shared resources
     // (e.g., filesystem) that are already loaded.
+    document.open();
+    document.write(markup);
     document.require = require;
-    document.documentElement.innerHTML = markup;
+    document.close();
   }
 
   /**
