@@ -1,9 +1,9 @@
 (ns glam.routes
   (:require-macros [secretary.core :refer [defroute]])
-  (:import goog.History)
   (:require
    [re-frame.core :as re-frame]
-   [glam.events :as events]
+   [glam.events.core :as events]
+   [glam.db.core :as glam-db]
    [accountant.core :as accountant]
    [secretary.core :as secretary]
    ))
@@ -12,10 +12,10 @@
   ;; --------------------
   ;; define routes here
   (defroute "/" []
-    (re-frame/dispatch [::events/set-active-panel :home-panel]))
+    (re-frame/dispatch [events/set-active-panel glam-db/home-panel]))
 
   (defroute "/about" []
-    (re-frame/dispatch [::events/set-active-panel :about-panel]))
+    (re-frame/dispatch [events/set-active-panel glam-db/about-panel]))
 
   )
 

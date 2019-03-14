@@ -2,17 +2,16 @@
   (:require
    [reagent.core :as reagent]
    [re-frame.core :as re-frame]
-   [glam.events :as events]
+   [glam.events.core :as events]
    [glam.routes :as routes]
-   [glam.views :as views]
-   [glam.config :as config]
+   [glam.views.core :as views]
    [secretary.core :as secretary]
    [accountant.core :as accountant]
    ))
 
 
 (defn dev-setup []
-  (when config/debug?
+  (when goog.DEBUG
     (enable-console-print!)
     (println "dev mode")))
 
@@ -25,5 +24,5 @@
 
 (defn ^:export init []
   (dev-setup)
-  (re-frame/dispatch-sync [::events/initialize-db])
+  (re-frame/dispatch-sync [events/initialize-db])
   (mount-root))
