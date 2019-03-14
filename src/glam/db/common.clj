@@ -1,5 +1,5 @@
 (ns glam.db.common
-  (:require [clojure.spec.alpha :as s]))
+  (:require [cljs.spec.alpha :as s]))
 
 (defmacro def-with-spec
   "A combination of def and clojure.spec.alpha/def: defines a new var from a
