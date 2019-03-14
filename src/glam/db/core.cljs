@@ -3,15 +3,15 @@
   (:require-macros [cljs.spec.alpha :as s]
                    [glam.db.common :refer [def-with-spec]]))
 
-(def-with-spec ::home-panel string?)
-(def-with-spec ::about-panel string?)
-(def-with-spec ::active-panel #{home-panel about-panel})
+(def-with-spec home-panel string?)
+(def-with-spec about-panel string?)
+(def-with-spec active-panel #{home-panel about-panel})
 
-(def-with-spec ::db (s/keys :req [::active-panel]))
+(def-with-spec db-root (s/keys :req [active-panel]))
 
 (defn valid-db?
   [db]
-  (s/valid? ::db db))
+  (s/valid? db-root db))
 
 (def default-db
   {active-panel home-panel})
