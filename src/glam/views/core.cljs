@@ -4,7 +4,9 @@
    [reagent.core :as r]
    [glam.interop.material-ui :as mui]
    [glam.db.core :as glam-db]
-   [glam.views.app-bar :refer [app-bar]]))
+   [glam.views.app-bar :refer [app-bar]])
+  (:require-macros
+   [glam.interop.material-ui :refer [defstyled]]))
 
 ;; home
 (defn styles
@@ -18,8 +20,16 @@
     [:a {:href "/about"}
      "go to About Page"]]])
 
-(defn home-panel []
+#_(defn home-panel []
   [(mui/get-styled-component styles home-content)])
+
+(defstyled home-panel
+  styles
+  [:main
+   {:class-name "content"}
+   [:div
+    [:a {:href "/about"}
+     "go to About Page"]]])
 
 ;; about
 (defn about-panel []

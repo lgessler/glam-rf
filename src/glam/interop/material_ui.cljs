@@ -1,5 +1,6 @@
 (ns glam.interop.material-ui
   (:require
+   [clojure.walk :refer [prewalk]]
    [cljs.analyzer.api :refer [ns-resolve]]
    [reagent.core :as r]
    ["@material-ui/core" :as mui]
@@ -46,9 +47,19 @@
   [props name]
   (-> props :classes (aget name)))
 
+(defn replace-class-name-val-in-hiccup
+  [hiccup]
+  (fn [props]
+    (prewalk
+     (fn [v]
+       (if (and (vector? v) (= (first v) :class-name))
+         [(first v) (get-class-name props (second v))]
+         v))
+     hiccup)))
+
 (def ^:export default-theme
   (createMuiTheme
-   (clj->js
+   #_(clj->js
     {:palette
      {:primary {:light (aget green "300")
                 :main (aget green "500")

@@ -1,13 +1,13 @@
 (ns glam.db.core
   (:require [cljs.spec.alpha :as s])
   (:require-macros [cljs.spec.alpha :as s]
-                   [glam.db.common :refer [def-with-spec]]))
+                   [glam.db.common :refer [defkeyword]]))
 
-(def-with-spec home-panel string?)
-(def-with-spec about-panel string?)
-(def-with-spec active-panel #{home-panel about-panel})
+(defkeyword home-panel string?)
+(defkeyword about-panel string?)
+(defkeyword active-panel #{home-panel about-panel})
 
-(def-with-spec db-root (s/keys :req [active-panel]))
+(defkeyword db-root (s/keys :req [active-panel]))
 
 (defn valid-db?
   [db]
