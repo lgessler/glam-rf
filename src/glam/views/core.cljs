@@ -11,7 +11,7 @@
 ;; home
 (defn styles
   [theme]
-  #js{:content #js{:font-size "100pt"}})
+  #js{:content #js{:font-size "18pt"}})
 
 (defn home-content [props]
   [:main
@@ -20,11 +20,7 @@
     [:a {:href "/about"}
      "go to About Page"]]])
 
-#_(defn home-panel []
-  [(mui/get-styled-component styles home-content)])
-
-(defstyled home-panel
-  styles
+(defstyled home-panel styles
   [:main
    {:class-name "content"}
    [:div
@@ -40,11 +36,6 @@
      "go to Home Page"]]])
 
 ;; main
-(rf/reg-sub
-  ::active-panel
-  (fn [db _]
-    (glam-db/active-panel db)))
-
 (defn- panels [panel-name]
   (condp = panel-name
     glam-db/home-panel [home-panel]
@@ -52,7 +43,7 @@
     [:div]))
 
 (defn inner-panel []
-  (let [active-panel (rf/subscribe [::active-panel])]
+  (let [active-panel (rf/subscribe [glam-db/active-panel])]
     [panels @active-panel]))
 
 (defn- main-panel-contents [props]

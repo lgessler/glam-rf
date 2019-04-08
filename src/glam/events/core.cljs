@@ -14,4 +14,5 @@
 (rf/reg-event-db
  set-active-panel
  (fn [db [_ active-panel]]
+   (js/console.log (glam-db/valid-db? db))
    (assoc db glam-db/active-panel active-panel)))

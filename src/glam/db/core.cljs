@@ -1,13 +1,15 @@
 (ns glam.db.core
-  (:require [cljs.spec.alpha :as s])
+  (:require [cljs.spec.alpha :as s]
+            [re-frame.core :as rf])
   (:require-macros [cljs.spec.alpha :as s]
-                   [glam.db.common :refer [defkeyword]]))
+                   [glam.db.common :refer [defdbkey]]))
 
-(defkeyword home-panel string?)
-(defkeyword about-panel string?)
-(defkeyword active-panel #{home-panel about-panel})
+;; db
+(defdbkey home-panel)
+(defdbkey about-panel)
+(defdbkey active-panel #{home-panel about-panel})
 
-(defkeyword db-root (s/keys :req [active-panel]))
+(defdbkey db-root (s/keys :req [active-panel]))
 
 (defn valid-db?
   [db]
@@ -15,3 +17,9 @@
 
 (def default-db
   {active-panel home-panel})
+
+;; subs
+(rf/reg-sub
+ ::active-panel
+ (fn [db _]
+   (active-panel db)))
