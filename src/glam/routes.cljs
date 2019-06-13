@@ -14,9 +14,8 @@
   (defroute "/" []
     (re-frame/dispatch [events/set-active-panel glam-db/home-panel]))
 
-  (defroute "/about" []
-    (re-frame/dispatch [events/set-active-panel glam-db/about-panel]))
-
+  (defroute "/document/:id" {:as params}
+    (re-frame/dispatch [events/set-active-panel glam-db/document-panel (:id params)]))
   )
 
 (defn hook-navigation! []

@@ -10,4 +10,4 @@
     [mui/icon-button {:color "inherit"}
      [(mui/get-icon "Menu")]]
     [mui/typography {:variant "h6" :color "inherit"}
-     "Photos"]]])
+     "Test"]]])
