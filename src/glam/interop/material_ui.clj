@@ -8,7 +8,8 @@
   little cumbersome in ClojureScript."
   [name styles props component]
   `(defn ~name ~props
-     [(mui/get-styled-component
-       ~styles
-       (fn []
-         (mui/replace-class-name-val-in-hiccup ~component)))]))
+     (fn ~props
+       [(mui/get-styled-component
+         ~styles
+         (fn []
+           (mui/replace-class-name-val-in-hiccup ~component)))])))
