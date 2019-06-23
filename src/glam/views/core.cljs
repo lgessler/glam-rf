@@ -4,29 +4,19 @@
    [reagent.core :as r]
    [glam.interop.material-ui :as mui]
    [glam.db.core :as glam-db]
-   [glam.views.app-bar :refer [app-bar]]
+   [glam.views.common.app-bar :refer [app-bar]]
+   [glam.views.home.core :refer [home-panel]]
    [glam.views.document.core :refer [document-panel]])
   (:require-macros
    [glam.interop.material-ui :refer [defstyled]]))
 
-;; home
-(defn styles
-  [theme]
-  #js{:content #js{:font-size "18pt"}})
-
-(defstyled home-panel styles
-  [:main
-   {:class-name "content"}
-   [:div
-    [:a {:href "/document/123"}
-     "go to About Page"]]])
 
 ;; main
 (defn- panels [panel-name]
   (condp = panel-name
     glam-db/home-panel [home-panel]
     glam-db/document-panel [document-panel]
-    [:div]))
+    (throw (js/Error. (str "Unknown panel name: " panel-name)))))
 
 (defn inner-panel []
   (let [active-panel (rf/subscribe [glam-db/active-panel])]
@@ -42,6 +32,4 @@
      [inner-panel]]]])
 
 (defn main-panel []
-  [(mui/get-styled-component
-   styles
-   main-panel-contents)])
+  [main-panel-contents])

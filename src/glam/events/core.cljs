@@ -3,6 +3,7 @@
    [re-frame.core :as rf]
    [glam.db.core :as glam-db]
    [glam.db.document.core :as doc-db]
+   [glam.events.interceptors :refer [check-db-spec]]
    ))
 
 (def initialize-db ::initialize-db)
@@ -10,17 +11,6 @@
  initialize-db
  (fn [_ _]
    glam-db/default-db))
-
-(def check-db-spec
-  (rf/->interceptor
-   :id :check-db-spec
-   :after (fn [context]
-            (when-not (-> context
-                          :effects
-                          :db
-                          glam-db/valid-db?)
-              (js/alert "Invalid DB!"))
-            context)))
 
 (def set-active-panel ::set-active-panel)
 (rf/reg-event-db
@@ -32,5 +22,3 @@
      (if (some? id)
        (assoc-in db [doc-db/active-document doc-db/id] id)
        db))))
-   
-

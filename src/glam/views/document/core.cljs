@@ -4,30 +4,29 @@
    [reagent.core :as r]
    [glam.interop.material-ui :as mui]
    [glam.db.core :as glam-db]
-   [glam.db.document.core :as doc-db]
-   [glam.views.app-bar :refer [app-bar]])
+   [glam.db.document.core :as doc-db])
   (:require-macros
    [glam.interop.material-ui :refer [defstyled]]))
 
-
 (defn styles
   [theme]
-  #js{:content #js{:font-size "18pt"}})
+  #js{:content #js{:font-size "14pt"}})
 
-;(defstyled home-panel styles
-;  [:main
-;   {:class-name "content"}
-;   [:div
-;    [:a {:href "/about"}
-;     "go to About Page"]]])
+(defstyled stysub styles
+  [x y]
+  [:main
+   {:class-name "content"}
+   [:p x " " y]
+   [:div
+    [:a {:href "/about"}
+     "go to About Page"]]])
 
-
-;; about
 (defn document-panel []
   (let [doc-id (rf/subscribe [doc-db/id])]
-    [:main
-     [:h1 (str "Hello! " @doc-id)]
-     [:div
-      [:a {:href "/"}
-       "go to Home Page"]]]))
-
+    [mui/paper
+     [:main
+      [:h1 (str "Hello! " @doc-id)]
+      [stysub "one" "two"]
+      [:div
+       [:a {:href "/"}
+        "go to Home Page"]]]]))
