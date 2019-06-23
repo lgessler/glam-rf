@@ -20,7 +20,8 @@
                  :http-root "resources/public"
                  :http-port 3449
                  :closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}
-                 :preloads        [day8.re-frame-10x.preload]}
+                 :preloads        [day8.re-frame-10x.preload]
+                 :loader-mode :eval}
 
                 :release
                 {:output-dir "dist/js"}

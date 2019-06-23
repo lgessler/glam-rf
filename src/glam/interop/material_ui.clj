@@ -3,8 +3,11 @@
             [glam.interop.material-ui :as mui]))
 
 (defmacro defstyled
-  [name styles component]
-  `(defn ~name []
+  "Abstracts away some syntactic messiness: MUI has an idiosyncratic
+  way of accommodating component-specific styles that becomes a
+  little cumbersome in ClojureScript."
+  [name styles props component]
+  `(defn ~name ~props
      [(mui/get-styled-component
        ~styles
        (fn []
