@@ -2,18 +2,16 @@
   (:require [cljs.spec.alpha :as s]
             [re-frame.core :as rf]
             [glam.db.common :refer [reg-simple-sub]]
-            [glam.db.document.core :refer [active-document]])
+            [glam.db.document.core :refer [document]])
   (:require-macros [cljs.spec.alpha :as s]
                    [glam.db.common :refer [defdbkey]]))
 
-;; db spec ----------------------------------------------------------------------
 (defdbkey home-panel)
 (defdbkey document-panel)
-(defdbkey active-panel #{home-panel document-panel})
+(defdbkey active-panel [] #{home-panel document-panel})
 
-;; document key
-(defdbkey db-root (s/keys :req [active-panel
-                                active-document]))
+(defdbkey db-root [] (s/keys :req [active-panel
+                                   document]))
 
 (defn valid-db?
   [db]
@@ -21,7 +19,7 @@
 
 (def default-db
   {active-panel home-panel
-   active-document {}})
+   document {}})
 
 ;; subs
-(reg-simple-sub active-panel)
+(reg-simple-sub active-panel get-active-panel)

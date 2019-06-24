@@ -5,12 +5,11 @@
   (:require-macros [cljs.spec.alpha :as s]
                    [glam.db.common :refer [defdbkey]]))
 
+(def base-path [:document])
+(defdbkey id base-path string?)
+(defdbkey document [] (s/spec
+                       (s/or
+                        :doc (s/keys :req [id])
+                        :empty-doc (s/keys :req []))))
 
-(defdbkey id string?)
-(defdbkey active-document (s/spec
-                           (s/or
-                            :doc (s/keys :req [id])
-                            :empty-doc (s/keys :req []))))
-(def base-path [active-document])
-
-(reg-simple-sub id (conj base-path id))
+(reg-simple-sub id get-id)

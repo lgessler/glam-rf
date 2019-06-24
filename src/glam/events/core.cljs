@@ -18,7 +18,6 @@
  [check-db-spec]
  (fn [db [_ active-panel id]]
    (js/console.log (str "db valid?: " (glam-db/valid-db? db)))
-   (let [db (assoc db glam-db/active-panel active-panel)]
-     (if (some? id)
-       (assoc-in db [doc-db/active-document doc-db/id] id)
-       db))))
+   (-> db
+       (glam-db/set-active-panel active-panel)
+       (doc-db/set-id id))))
