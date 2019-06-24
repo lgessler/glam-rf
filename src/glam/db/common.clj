@@ -31,12 +31,12 @@
          ns-kwd (keyword (str *ns*) (str name))
          get-fname (symbol (str "get-" name))
          set-fname (symbol (str "set-" name))]
-     `(let [~'path (conj ~base-path ~kwd)]
+     `(let [path# (conj ~base-path ~kwd)]
         (def ~name ~kwd)
         (s/def ~ns-kwd ~pred)
         (defn ~get-fname
           ~'[db]
-          (get-in ~'db ~'path))
+          (get-in ~'db path#))
         (defn ~set-fname
           ~'[db v]
-          (assoc-in ~'db ~'path ~'v))))))
+          (assoc-in ~'db path# ~'v))))))
