@@ -41,7 +41,7 @@
         styles-decorator
         r/adapt-react-class)))
 
-(defn- get-class-name
+(defn get-class-name
   "Given props from a component wrapped with style-component, retrieve the
   CSS class name corresponding to a name."
   [props name]
