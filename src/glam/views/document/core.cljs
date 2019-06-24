@@ -13,20 +13,19 @@
   #js{:content #js{:font-size "14pt"}})
 
 (defstyled stysub styles
-  [x y]
+  [{:keys [x y]}]
   [:main
    {:class-name "content"}
-   [:p x " " y]
-   [:div
-    [:a {:href "/about"}
-     "go to About Page"]]])
+   [:p x " " y " "]])
 
 (defn document-panel []
-  (let [doc-id (rf/subscribe [doc-db/id])]
-    [mui/paper
-     [:main
-      [:h1 (str "Hello! " @doc-id)]
-      [stysub "one" "two"]
-      [:div
-       [:a {:href "/"}
-        "go to Home Page"]]]]))
+  [mui/paper
+   [:main
+    {:class-name "content"}
+    (let [doc-id (rf/subscribe [doc-db/id])]
+      [:h1 (str "Hello! " @doc-id)])
+    [stysub {:x "one"
+             :y "two"}]
+    [:div
+     [:a {:href "/"}
+      "go to Home Page"]]]])

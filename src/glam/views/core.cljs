@@ -22,7 +22,7 @@
   (let [active-panel (rf/subscribe [glam-db/active-panel])]
     [panels @active-panel]))
 
-(defn- main-panel-contents [props]
+(defn main-panel []
   [:<>
    [mui/css-baseline]
    [:div
@@ -30,6 +30,3 @@
      [app-bar {:position "static"
                :color "primary"}]
      [inner-panel]]]])
-
-(defn main-panel []
-  [main-panel-contents])
