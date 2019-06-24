@@ -1,6 +1,7 @@
 (ns glam.db.core
   (:require [cljs.spec.alpha :as s]
             [re-frame.core :as rf]
+            [glam.db.common :refer [reg-simple-sub]]
             [glam.db.document.core :refer [active-document]])
   (:require-macros [cljs.spec.alpha :as s]
                    [glam.db.common :refer [defdbkey]]))
@@ -16,14 +17,11 @@
 
 (defn valid-db?
   [db]
-  (s/valid? db-root db))
+  (s/valid? ::db-root db))
 
 (def default-db
   {active-panel home-panel
    active-document {}})
 
 ;; subs
-(rf/reg-sub
- active-panel
- (fn [db _]
-   (active-panel db)))
+(reg-simple-sub active-panel)
