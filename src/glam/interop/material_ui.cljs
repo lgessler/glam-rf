@@ -33,29 +33,13 @@
 ;; map from class name to css class name. Note that because of interop the
 ;; end result is that the outer-level key is a clojure keyword, but the
 ;; inner-level key is a string.
-(defn get-styled-component
+(defn styled-component
   [styles reagent-component]
   (let [styles-decorator (withStyles styles)]
     (-> reagent-component
         r/reactify-component
         styles-decorator
         r/adapt-react-class)))
-
-(defn get-class-name
-  "Given props from a component wrapped with style-component, retrieve the
-  CSS class name corresponding to a name."
-  [props name]
-  (-> props :classes (aget name)))
-
-(defn replace-class-name-val-in-hiccup
-  [hiccup]
-  (fn [props]
-    (prewalk
-     (fn [v]
-       (if (and (vector? v) (= (first v) :class-name))
-         [(first v) (get-class-name props (second v))]
-         v))
-     hiccup)))
 
 (def ^:export default-theme
   (createMuiTheme
