@@ -17,7 +17,7 @@
     2. uses `pred` to create a spec for the associated value in the database"
    (let [kwd (keyword #_(str *ns*) (str name))
          ns-kwd (keyword (str *ns*) (str name))]
-     `(let [~'path (conj ~base-path ~kwd)]
+     `(do
         (def ~name ~kwd)
         (s/def ~ns-kwd ~pred))))
 
@@ -35,8 +35,8 @@
         (def ~name ~kwd)
         (s/def ~ns-kwd ~pred)
         (defn ~get-fname
-          ~'[db]
-          (get-in ~'db path#))
+          [db#]
+          (get-in db# path#))
         (defn ~set-fname
-          ~'[db v]
-          (assoc-in ~'db path# ~'v))))))
+          [db# v#]
+          (assoc-in db# path# v#))))))
