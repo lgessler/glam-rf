@@ -1,7 +1,8 @@
 (ns glam.views.home.core
   (:require
    [re-frame.core :as rf]
-   [reagent.core :as r])
+   [reagent.core :as r]
+   [glam.views.common.spaced-paper :refer [spaced-paper]])
   (:require-macros
    [glam.interop.material-ui :refer [defstyled]]))
 
@@ -12,7 +13,7 @@
 
 (defn home-panel
   []
-  [:main
+  [spaced-paper
    {:class-name "content"}
    [:div
     [:a {:href "/document/123"}

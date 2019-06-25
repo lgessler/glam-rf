@@ -5,7 +5,8 @@
    [glam.interop.material-ui :as mui]
    [glam.db.core :as glam-db]
    [glam.db.document.core :as doc-db]
-   [glam.views.common.input-elements :refer [input-element]])
+   [glam.views.common.input-elements :refer [input-element]]
+   [glam.views.common.spaced-paper :refer [spaced-paper]])
   (:require-macros
    [glam.interop.material-ui :refer [defstyled]]))
 
@@ -34,7 +35,7 @@
 
 (defn document-panel
   [{:keys [classes] :as props}]
-  [mui/paper
+  [spaced-paper
    [header]
    [testc {:x "qwe"}]
    [:main
