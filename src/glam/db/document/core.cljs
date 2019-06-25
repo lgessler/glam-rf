@@ -7,9 +7,13 @@
 
 (def base-path [:document])
 (defdbkey id base-path string?)
+(defdbkey review base-path string?)
+(defdbkey rating base-path number?)
 (defdbkey document [] (s/spec
                        (s/or
                         :doc (s/keys :req [id])
                         :empty-doc (s/keys :req []))))
 
 (reg-simple-sub id get-id)
+(reg-simple-sub review get-review)
+(reg-simple-sub rating get-rating)

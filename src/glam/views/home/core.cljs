@@ -10,7 +10,7 @@
   [theme]
   #js{:content #js{:font-size "18pt"}})
 
-(defstyled home-panel styles
+(defn home-panel
   []
   [:main
    {:class-name "content"}

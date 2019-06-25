@@ -6,9 +6,7 @@
    [glam.db.core :as glam-db]
    [glam.views.common.app-bar :refer [app-bar]]
    [glam.views.home.core :refer [home-panel]]
-   [glam.views.document.core :refer [document-panel]])
-  (:require-macros
-   [glam.interop.material-ui :refer [defstyled]]))
+   [glam.views.document.core :refer [document-panel]]))
 
 
 ;; main

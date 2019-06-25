@@ -4,28 +4,38 @@
    [reagent.core :as r]
    [glam.interop.material-ui :as mui]
    [glam.db.core :as glam-db]
-   [glam.db.document.core :as doc-db])
+   [glam.db.document.core :as doc-db]
+   [glam.views.common.input-elements :refer [input-element]])
   (:require-macros
    [glam.interop.material-ui :refer [defstyled]]))
 
 (defn styles
   [theme]
-  #js{:content #js{:font-size "14pt"}})
+  #js{:base #js{:padding "1rem"
+                :margin "1rem"}
+      :test #js{:color "blue"}})
 
-(defstyled stysub styles
-  [{:keys [x y]}]
-  [:main
-   {:class-name "content"}
-   [:p x " " y " "]])
+(defn- header []
+  (fn []
+    (let [id (rf/subscribe [doc-db/id])]
+      [:header @id])))
 
-(defn document-panel []
+(defn- form []
+  [:form
+   [:a {:href "/"}
+    "go to home"]])
+
+(defstyled testc styles
+  [{:keys [classes x] :as props}]
+  [:p
+   {:class-name (.-test classes)}
+   (str classes " " x)
+   "test"])
+
+(defn document-panel
+  [{:keys [classes] :as props}]
   [mui/paper
+   [header]
+   [testc {:x "qwe"}]
    [:main
-    {:class-name "content"}
-    (let [doc-id (rf/subscribe [doc-db/id])]
-      [:h1 (str "Hello! " @doc-id)])
-    [stysub {:x "one"
-             :y "two"}]
-    [:div
-     [:a {:href "/"}
-      "go to Home Page"]]]])
+    [form]]])
