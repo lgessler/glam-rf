@@ -26,7 +26,8 @@
    [:a {:href "/"}
     "go to home"]])
 
-(defstyled testc styles
+(defstyled testc
+  styles
   [{:keys [classes x] :as props}]
   [:p
    {:class-name (.-test classes)}

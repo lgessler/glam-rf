@@ -17,4 +17,4 @@
    {:class-name "content"}
    [:div
     [:a {:href "/document/123"}
-     "go to Documentt Page"]]])
+     "go to Document Page"]]])

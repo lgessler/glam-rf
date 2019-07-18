@@ -4,5 +4,5 @@
    [glam.events.common :refer [reg-simple-event-db]]
    [glam.db.document.core :as doc-db]))
 
-(reg-simple-event-db doc-db/review doc-db/get-review)
-(reg-simple-event-db doc-db/rating doc-db/get-rating)
+(reg-simple-event-db doc-db/text doc-db/set-text)
+(reg-simple-event-db doc-db/rating doc-db/set-rating)
