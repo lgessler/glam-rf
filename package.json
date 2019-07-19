@@ -17,25 +17,25 @@
     "less": "less-watch-compiler less resources/public/css",
     "repl": "shadow-cljs cljs-repl app",
     "stop": "shadow-cljs stop",
-    "server": "shadow-cljs server;",
+    "server": "shadow-cljs server -A:dev;",
     "compile-tests": "shadow-cljs -A:dev compile test;",
     "clean": "rm -rf target; rm -rf resources/public/js"
   },
   "dependencies": {
-    "@material-ui/core": "^4.2.1",
-    "@material-ui/icons": "^4.2.1",
-    "create-react-class": "^15.6.3",
-    "highlight.js": "^9.15.8",
-    "pouchdb": "^7.1.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "yarn": "^1.17.3"
+    "@material-ui/core": "4.2.1",
+    "@material-ui/icons": "4.2.1",
+    "create-react-class": "15.6.3",
+    "highlight.js": "9.15.8",
+    "pouchdb": "7.1.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "yarn": "1.17.3"
   },
   "devDependencies": {
     "less": "3.9.0",
-    "less-watch-compiler": "1.3.0",
-    "react-flip-move": "^3.0.3",
-    "react-highlight.js": "^1.0.7",
-    "shadow-cljs": "^2.7.9"
+    "less-watch-compiler": "1.13.0",
+    "react-flip-move": "3.0.3",
+    "react-highlight.js": "1.0.7",
+    "shadow-cljs": "2.8.40"
   }
 }
