@@ -22,14 +22,14 @@
     "clean": "rm -rf target; rm -rf resources/public/js"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.0",
-    "@material-ui/icons": "^3.0.2",
+    "@material-ui/core": "^4.2.1",
+    "@material-ui/icons": "^4.2.1",
     "create-react-class": "^15.6.3",
     "highlight.js": "^9.15.8",
     "pouchdb": "^7.1.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "yarn": "^1.13.0"
+    "yarn": "^1.17.3"
   },
   "devDependencies": {
     "less": "3.9.0",
